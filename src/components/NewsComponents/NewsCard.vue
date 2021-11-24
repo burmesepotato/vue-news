@@ -6,40 +6,63 @@
   >
     <template slot='progress'>
       <v-progress-linear
-        color='deep-purple'
-        height='10'
+        color='teal accent-4'
+        height='5'
         indeterminate
       ></v-progress-linear>
     </template>
 
     <v-img
       height='200'
-      src='https://cdn.vuetifyjs.com/images/cards/cooking.png'
+      :src='headline.urlToImage'
     ></v-img>
 
     <p class="teal--text text--accent-4 font-weight-bold text-h6">
-      The Guardian
+      {{ headline.source.name }}
     </p>
 
     <v-card-title class="pt-0 pb-2">
-      Biden to address state of US economy as inflation hits 31-year high
-      – live - The Guardian
+      {{ headline.title }}
     </v-card-title>
 
     <v-card-text>
-      <div class='grey--text mb-4'>23 November 2021</div>
+      <div class='grey--text mb-4'>{{ date }}</div>
 
       <div>
-        Small plates, salads & sandwiches - an intimate setting
-        with 12 indoor seats plus patio seating.
+        {{ headline.description }}
       </div>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
-export default {
+// import useDate from '@/helpers/useDate';
+import getFriendlyDate from '@/helpers/useDate';
 
+export default {
+  props: {
+    headline: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000);
+
+    // const { getFriendlyDate } = useDate();
+  },
+  computed: {
+    date() {
+      return getFriendlyDate(this.headline.publishedAt);
+    },
+  },
 };
 </script>
 

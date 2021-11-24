@@ -1,16 +1,23 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row v-if="headlines.length">
       <v-col
-        v-for="n in 3"
-        :key="n"
+        v-for="(headline, $index) in headlines"
+        :key="$index"
         sm="6"
         md="4"
         xl="3"
       >
-        <NewsCard />
+        <NewsCard :headline="headline" />
       </v-col>
     </v-row>
+
+    <div 
+      v-else 
+      class="text-h6 font-weight-light text-center"
+    >
+      No headline news at the moment.
+    </div>
   </v-container>
 </template>
 
@@ -20,6 +27,12 @@ import NewsCard from '@/components/NewsComponents/NewsCard.vue';
 export default {
   components: {
     NewsCard,
+  },
+  props: {
+    headlines: {
+      type: Array,
+      required: true,
+    },
   },
 };
 </script>
