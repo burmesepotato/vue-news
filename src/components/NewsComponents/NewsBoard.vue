@@ -1,12 +1,13 @@
 <template>
-  <v-container>
+  <v-container class="py-16">
     <v-row v-if="headlines.length">
       <v-col
         v-for="(headline, $index) in headlines"
         :key="$index"
+        cols="12"
         sm="6"
         md="4"
-        xl="3"
+        class="d-flex"
       >
         <NewsCard :headline="headline" />
       </v-col>

@@ -1,13 +1,6 @@
 <template>
-  <section class="pt-16">
-    <v-container>
-      <v-row>
-        <v-col>
-          <NewsFilter />
-        </v-col>
-      </v-row>
-    </v-container>
-
+  <section class="grey darken-4">
+    <NewsFilter />
     <NewsBoard :headlines="headlines" />
   </section>
 </template>
@@ -25,11 +18,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-      headlines: 'headlines/filteredHeadlines'
+      headlines: 'headlines/filteredHeadlines',
     }),
   },
   created() {
-    // this.$store.dispatch('headlines/getHeadlines');
+    this.$store.dispatch('headlines/getHeadlines');
     // this.$store.dispatch('headlines/getSources');
   },
 };

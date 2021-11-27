@@ -6,6 +6,8 @@
     filled
     :label="label"
     @change="updateValue"
+    dark
+    
   ></v-autocomplete>
 </template>
 

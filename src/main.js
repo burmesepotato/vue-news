@@ -5,6 +5,8 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 import registerGlobalComponents from './global-components';
 
+import '@/assets/scss/base/index.scss';
+
 registerGlobalComponents();
 Vue.config.productionTip = false;
 

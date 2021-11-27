@@ -1,0 +1,77 @@
+@use '~vuetify/src/styles/styles.sass' as *;
+
+.v-application .newsCard {
+  border: 1px solid var(--color-grey) !important;
+}
+
+.newsCard {
+  box-shadow: none !important;
+  overflow: hidden;
+
+  &__imgWrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: calc(100% / 5 * 3);
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+    
+    #clip {
+      /*  x = 1 / 1920, y = 1 / 1080  */
+      transform: scale(0.000520833, 0.000925925);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    clip-path: url(#clip);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.4);
+    transform: scale(1);
+    transition: var(--transition-sm);
+  }
+
+  &__source,
+  &__title {
+    line-height: 1.3;
+  }
+
+  &__imgWrapper,
+  &__title {
+    cursor: pointer;
+  }
+
+  &__title {
+    color: var(--color-white);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0;
+    word-break: normal;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  &:hover {
+    .newsCard__img {
+      filter: grayscale(0);
+      transform: scale(1.03);
+    }
+  }
+
+  @media only screen and (min-width: map-get($grid-breakpoints, 'sm')) {
+    &__imgWrapper {
+      padding-bottom: calc(100% / 19 * 10);
+    }
+  }
+}

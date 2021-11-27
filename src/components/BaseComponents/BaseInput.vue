@@ -4,6 +4,7 @@
     :required="required" 
     @input="updateValue"
     :inputmode="inputmode"
+    dark
   >
     <v-icon
       slot="prepend"

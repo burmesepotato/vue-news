@@ -1,5 +1,5 @@
 import { fetchHeadlines, fetchSources } from '@/helpers/useFetchData';
-// import dummyArticles from '@/constants/dummyArticles';
+import dummyArticles from '@/constants/dummyArticles';
 
 export const namespaced = true;
 
@@ -23,11 +23,11 @@ export const mutations = {
 
 export const actions = {
   getHeadlines({ commit }) {
-    fetchHeadlines().then(({ data }) => {
-      commit('SET_HEADLINES', data.articles);
-    });
+    // fetchHeadlines().then(({ data }) => {
+    //   commit('SET_HEADLINES', data.articles);
+    // });
 
-    // commit('SET_HEADLINES', dummyArticles);
+    commit('SET_HEADLINES', dummyArticles);
   },
   getSources({ commit }) {
     fetchSources().then(({ data }) => {
