@@ -1,4 +1,4 @@
-import { fetchSources } from '@/helpers/useFetchData';
+import { fetchSources, displayError } from '@/helpers/useFetchData';
 
 export const namespaced = true;
 
@@ -20,7 +20,8 @@ export const actions = {
   getSources({ commit }) {
     fetchSources().then(({ data }) => {
       commit('SET_SOURCES', data.sources);
-    });
+    })
+    .catch(displayError)
   },
   setSelectedSource({ commit }, selectedSource) {
     commit('SET_SELECTED_SOURCE', selectedSource);

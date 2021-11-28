@@ -33,13 +33,24 @@
       {{ headline.title }}
     </v-card-title>
 
-    <v-card-text class="px-5">
+    <v-card-text class="d-flex align-center justify-space-between px-5">
       <div class='grey--text mb-0 font-weight-regular'>{{ date }}</div>
+      <v-chip
+        v-if="hasVisited"
+        color="deep-purple accent-1"
+        class="text-caption white--text px-2 py-2 font-weight-light"
+        label
+        outlined
+        x-small
+      >
+        visited
+      </v-chip>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import { getFriendlyDate } from '@/helpers/useDate';
 import { getSlug } from '@/helpers/useSlug';
 
@@ -61,14 +72,19 @@ export default {
     }, 1000);
   },
   computed: {
+    ...mapState({
+      visitedHeadlines: state => state.headlines.visitedHeadlines
+    }),
     date() {
       return getFriendlyDate(this.headline.publishedAt);
     },
+    hasVisited() {
+      return this.visitedHeadlines.has(this.headline.url)
+    }
   },
   methods: {
     redirectHeadline() {
       let slug = getSlug(this.headline.title);
-      console.log('using getSlug', slug);
 
       this.$store.dispatch('headlines/setCurrentHeadline', this.headline)
       this.$router.push({ name: 'Headline', params: { slug: slug } })

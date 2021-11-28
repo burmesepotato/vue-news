@@ -25,7 +25,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { fetchSearch } from '@/helpers/useFetchData';
+import { fetchSearch, displayError } from '@/helpers/useFetchData';
 import _ from 'lodash'
 
 export default {
@@ -48,9 +48,9 @@ export default {
 
         fetchSearch(text).then(({data}) => {
           this.$store.dispatch('headlines/setSearchResult', data.articles)
-        }).catch(err => {
-          console.log(err)
-        }).finally(() => {
+        })
+        .catch(displayError)
+        .finally(() => {
           this.$store.dispatch('loader/setLoader', false)
         })
       } else {

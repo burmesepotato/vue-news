@@ -15,30 +15,22 @@
       </div>
     </v-app-bar>
 
-      <!-- <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn> -->
-    
-
     <v-main>
       <router-view/>
     </v-main>
+
+    <ErrorMessage />
   </v-app>
 </template>
 
 <script>
+import ErrorMessage from '@/components/UtilComponents/ErrorMessage.vue';
 
 export default {
   name: 'App',
-
-  data: () => ({
-    
-  }),
+  components: {
+    ErrorMessage
+  },
   created() {
     this.$store.dispatch('headlines/getHeadlines');
   },

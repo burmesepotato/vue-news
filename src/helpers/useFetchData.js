@@ -1,3 +1,4 @@
+import store from '@/store/index';
 import axios from 'axios';
 import {
   API_HEADLINES_URL,
@@ -12,16 +13,14 @@ const INSTANCE = axios.create({
 
 
 export const fetchHeadlines = () => INSTANCE.get(`${API_HEADLINES_URL}&apiKey=${API_KEY}`)
-    .catch((err) => {
-      console.error(err);
-    });
 
 export const fetchSources = () => INSTANCE.get(`${API_SOURCES_URL}apiKey=${API_KEY}`)
-    .catch((err) => {
-      console.error(err);
-    });
 
 export const fetchSearch = (text) => INSTANCE.get(`${API_SEARCH_URL}${text}&apiKey=${API_KEY}`)
-    .catch((err) => {
-      console.error(err);
-    });
+
+export const displayError = (err) => {
+  // console.warn(err.response)
+  // console.warn(err.message)
+
+  store.dispatch('error/setMessage', err.message)
+}

@@ -1,7 +1,7 @@
 <template>
   <section id="news" class="grey darken-4">
     <NewsFilter />
-    <NewsBoard v-if="!isLoading" :headlines="displayHeadlines" />
+    <NewsBoard v-if="!isLoading" :headlines="headlines" />
     <NewsSkeleton v-else />
   </section>
 </template>
@@ -25,13 +25,7 @@ export default {
     }),
     ...mapState({
       isLoading: (state) => state.loader.isLoading,
-      isSearching: (state) => state.headlines.isSearching,
-      searchResults: (state) => state.headlines.searchResults,
     }),
-    displayHeadlines() {
-      if(this.isSearching) return this.searchResults
-      else return this.headlines
-    }
   },
   created() {
     this.$store.dispatch('sources/getSources');
