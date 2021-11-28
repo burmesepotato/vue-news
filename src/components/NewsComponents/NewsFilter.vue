@@ -25,32 +25,40 @@
 
 <script>
 import { mapState } from 'vuex';
-import fetchSearch from '@/helpers/useFetchData';
+import { fetchSearch } from '@/helpers/useFetchData';
+import _ from 'lodash'
 
 export default {
   computed: {
     ...mapState({
-      sources: (state) => state.headlines.sources
+      sources: (state) => state.sources.sources
     }),
     sourceNames() {
       return this.sources.map(source => source.name)
     }
   },
+  created() {
+    this.searchHeadline = _.debounce(this.searchHeadline, 500)
+  },
   methods: {
     searchHeadline(text) {
       if(text.trim() !== '') {
-        setTimeout(() => {
-          console.log(text)
+        this.$store.dispatch('loader/setLoader', true)
+        this.$store.dispatch('headlines/setIsSearching', true)
 
-          // fetchSearch(text).then((response) => {
-          // console.log('Search response: ', response)
-          // })
-        }, 500)
-        
+        fetchSearch(text).then(({data}) => {
+          this.$store.dispatch('headlines/setSearchResult', data.articles)
+        }).catch(err => {
+          console.log(err)
+        }).finally(() => {
+          this.$store.dispatch('loader/setLoader', false)
+        })
+      } else {
+        this.$store.dispatch('headlines/setIsSearching', false)
       }
     },
     updateSource(sourceName) {
-      this.$store.dispatch('headlines/setSelectedSource', sourceName);
+      this.$store.dispatch('sources/setSelectedSource', sourceName);
     },
   },
 };
@@ -59,6 +67,7 @@ export default {
 <style lang="scss" scoped>
 .newsFilter {
   padding: 8rem 0;
+  z-index: 10;
 
   &__grid {
     display: grid;
@@ -77,7 +86,7 @@ export default {
 .gradient-background {
   background: linear-gradient(300deg,#311b92,#7c4dff,#311b92);
   background-size: 180% 180%;
-  animation: gradient-animation 13s ease infinite;
+  animation: gradient-animation 10s ease infinite;
 }
 
 @keyframes gradient-animation {

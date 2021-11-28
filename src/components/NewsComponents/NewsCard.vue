@@ -12,7 +12,7 @@
       ></v-progress-linear>
     </template>
 
-    <div class="newsCard__imgWrapper">
+    <div class="newsCard__imgWrapper" @click="redirectHeadline">
       <img :src="headline.urlToImage" :alt="headline.title" class="newsCard__img">
       
       <svg 
@@ -29,23 +29,19 @@
       {{ headline.source.name }}
     </p>
 
-    <v-card-title class="py-0 px-5 mb-4 newsCard__title">
+    <v-card-title class="py-0 px-5 mb-4 text--white newsCard__title" @click="redirectHeadline">
       {{ headline.title }}
     </v-card-title>
 
     <v-card-text class="px-5">
       <div class='grey--text mb-0 font-weight-regular'>{{ date }}</div>
-
-      <!-- <div>
-        {{ headline.description }}
-      </div> -->
     </v-card-text>
   </v-card>
 </template>
 
 <script>
-// import useDate from '@/helpers/useDate';
-import getFriendlyDate from '@/helpers/useDate';
+import { getFriendlyDate } from '@/helpers/useDate';
+import { getSlug } from '@/helpers/useSlug';
 
 export default {
   props: {
@@ -62,15 +58,22 @@ export default {
   mounted() {
     setTimeout(() => {
       this.loading = false;
-    }, 2000);
-
-    // const { getFriendlyDate } = useDate();
+    }, 1000);
   },
   computed: {
     date() {
       return getFriendlyDate(this.headline.publishedAt);
     },
   },
+  methods: {
+    redirectHeadline() {
+      let slug = getSlug(this.headline.title);
+      console.log('using getSlug', slug);
+
+      this.$store.dispatch('headlines/setCurrentHeadline', this.headline)
+      this.$router.push({ name: 'Headline', params: { slug: slug } })
+    }
+  }
 };
 </script>
 

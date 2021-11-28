@@ -1,10 +1,11 @@
 @use '~vuetify/src/styles/styles.sass' as *;
 
-// @media only screen and (min-width: map-get($grid-breakpoints, 'lg')) {
-//   .container {
-//   max-width: 748px !important;
-//   }
-// }
+.separator {
+  border: none;
+  border-bottom: 1px solid var(--color-grey);
+  padding: 2rem 0;
+  width: 100%;
+}
 
 @media only screen and (min-width: map-get($grid-breakpoints, 'xl')) {
   .container {

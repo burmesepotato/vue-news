@@ -1,5 +1,5 @@
 <template>
-  <v-container class="py-16">
+  <v-container class="py-16 text--white">
     <v-row v-if="headlines.length">
       <v-col
         v-for="(headline, $index) in headlines"
@@ -15,7 +15,7 @@
 
     <div 
       v-else 
-      class="text-h6 font-weight-light text-center"
+      class="text-h5 font-weight-light text-center py-10"
     >
       No headline news at the moment.
     </div>

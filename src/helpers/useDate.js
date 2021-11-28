@@ -8,6 +8,8 @@ import moment from 'moment';
 //   };
 // }
 
-export default function getFriendlyDate(dateString) {
-  return moment(dateString).format('DD MMM YYYY');
+export const getFriendlyDate = (dateString) => moment(dateString).format('DD MMM YYYY');
+
+export const getWhenAgo = () => {
+
 }
