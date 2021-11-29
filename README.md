@@ -19,9 +19,9 @@ On Home page, the user will also be able to:
 ### Note:
 The app is deployed [here](https://vue-news-a4efc.firebaseapp.com/) on firebase. However, due to changes in [pricing model](https://newsapi.org/pricing) by **NewsAPI**, requests from the browser are not allowed on the Developer plan, except from localhost. Hence, this would result in Error 426.
 
-![Screenshot of Home screen](https://github.com/burmesepotato/git-readme/blob/main/vue-news/vue-news-home.PNG)
+![Screenshot of Home screen](https://github.com/burmesepotato/git-readme/blob/main/vue-news/vue-news-home.jpg)
 
-![Screenshot of Headline screen](https://github.com/burmesepotato/git-readme/blob/main/vue-news/vue-news-headline.PNG)
+![Screenshot of Headline screen](https://github.com/burmesepotato/git-readme/blob/main/vue-news/vue-news-headline.jpg)
 
 ## Project setup
 ```
