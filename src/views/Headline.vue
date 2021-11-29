@@ -9,7 +9,7 @@
           offset-lg="2"
           lg="8"
           offset-xl="3"
-          xl="3"
+          xl="6"
         >
           <article v-if="headline" class="headline">
             <h1 class="text-h5 text-sm-h4 font-weight-black mb-4 mb-sm-4 headline__title">
