@@ -21,8 +21,8 @@ const store = new Vuex.Store({
     headlines,
     loader,
     newsModal,
-    sources
+    sources,
   },
 });
 
-export default store
+export default store;

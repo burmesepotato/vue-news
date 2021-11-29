@@ -61,7 +61,12 @@
           </article>
 
           <article v-else>
-            <h1 class="text-h5 text-sm-h4 text-md-h3 font-weight-black text-center">Oops! <span class="d-inline-block">Article not found.</span></h1>
+            <h1
+              class="text-h5 text-sm-h4 text-md-h3 font-weight-black text-center"
+            >
+              Oops!
+              <span class="d-inline-block">Article not found.</span>
+            </h1>
           </article>
 
           <hr class="separator">
@@ -83,7 +88,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { getFriendlyDate } from '@/helpers/useDate';
+import getFriendlyDate from '@/helpers/useDate';
 
 export default {
   props: {

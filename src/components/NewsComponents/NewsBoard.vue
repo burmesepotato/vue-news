@@ -13,8 +13,8 @@
       </v-col>
     </v-row>
 
-    <div 
-      v-else 
+    <div
+      v-else
       class="text-h5 font-weight-light text-center py-10"
     >
       No headline news at the moment.

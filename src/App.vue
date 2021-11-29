@@ -29,7 +29,7 @@ import ErrorMessage from '@/components/UtilComponents/ErrorMessage.vue';
 export default {
   name: 'App',
   components: {
-    ErrorMessage
+    ErrorMessage,
   },
   created() {
     this.$store.dispatch('headlines/getHeadlines');

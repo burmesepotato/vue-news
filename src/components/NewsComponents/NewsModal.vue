@@ -5,7 +5,7 @@
     max-width="500"
   >
     <v-card color="grey darken-4">
-      <v-card-title 
+      <v-card-title
         class="text-h6 deep-purple--text text--accent-1 mb-4"
       >
         Edit Headline Title
@@ -56,36 +56,36 @@ import { mapState } from 'vuex';
 export default {
   data() {
     return {
-      newTitle: "",
-      wordLimit: 120
-    }
+      newTitle: '',
+      wordLimit: 120,
+    };
   },
   watch: {
-    headline: function(newVal) {
-      if(newVal) {
-        this.newTitle = this.headline.title
+    headline(newVal) {
+      if (newVal) {
+        this.newTitle = this.headline.title;
       }
-    }
+    },
   },
   computed: {
     ...mapState({
-      showModal: state => state.newsModal.showModal,
-      headline: state => state.newsModal.headline
+      showModal: (state) => state.newsModal.showModal,
+      headline: (state) => state.newsModal.headline,
     }),
     disabled() {
-      return this.newTitle.length > this.wordLimit
-    }
+      return this.newTitle.length > this.wordLimit;
+    },
   },
   methods: {
     closeModal() {
-      this.$store.dispatch('newsModal/setShowModal', false)
+      this.$store.dispatch('newsModal/setShowModal', false);
     },
     updateHeadline() {
       this.headline.title = this.newTitle;
 
-      this.$store.dispatch('headlines/updateHeadlineTitle', this.headline)
-      this.$store.dispatch('newsModal/setShowModal', false)
-    }
-  }
-}
+      this.$store.dispatch('headlines/updateHeadlineTitle', this.headline);
+      this.$store.dispatch('newsModal/setShowModal', false);
+    },
+  },
+};
 </script>

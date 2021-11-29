@@ -9,7 +9,7 @@ export const state = {
 
 export const mutations = {
   SET_SOURCES(state, data) {
-    state.sources = data
+    state.sources = data;
   },
   SET_SELECTED_SOURCE(state, selectedSource) {
     state.selectedSource = selectedSource;
@@ -21,7 +21,7 @@ export const actions = {
     fetchSources().then(({ data }) => {
       commit('SET_SOURCES', data.sources);
     })
-    .catch(displayError)
+      .catch(displayError);
   },
   setSelectedSource({ commit }, selectedSource) {
     commit('SET_SELECTED_SOURCE', selectedSource);

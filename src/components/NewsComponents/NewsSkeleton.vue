@@ -18,12 +18,6 @@
   </v-container>
 </template>
 
-<script>
-  export default {
-    
-  }
-</script>
-
 <style lang="scss" scoped>
 @use '@/assets/scss/components/newsSkeleton.scss';
 </style>

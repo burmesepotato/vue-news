@@ -13,26 +13,26 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 
 export default {
   data() {
     return {
-      showError: false
-    }
+      showError: false,
+    };
   },
   computed: {
     ...mapState({
-      errMessage: state => state.error.message
-    })
+      errMessage: (state) => state.error.message,
+    }),
   },
   watch: {
-    errMessage: function() {
-      this.showError = true
+    errMessage() {
+      this.showError = true;
       setTimeout(() => {
-        this.showError = false
-      }, 4000)
-    }
-  }
+        this.showError = false;
+      }, 4000);
+    },
+  },
 };
 </script>

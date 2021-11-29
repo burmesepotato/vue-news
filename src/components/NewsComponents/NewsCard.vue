@@ -12,17 +12,20 @@
       ></v-progress-linear>
     </template>
 
-    
     <div class="newsCard__imgWrapper">
       <img :src="headline.urlToImage" :alt="headline.title" class="newsCard__img">
-      
-      <svg 
+
+      <svg
       @click="redirectHeadline"
-        xmlns="http://www.w3.org/2000/svg" 
+        xmlns="http://www.w3.org/2000/svg"
         width="1920" height="1080" viewBox="0 0 1920 1080" fill="none"
       >
         <clipPath id="clip" clipPathUnits="objectBoundingBox">
-          <path id="wave-1" d="M969.5 1060.5C718 1026.5 323.5 929.5 0 978V0.5H1920V1018C1593.5 1053.5 1481.5 1107.5 969.5 1060.5Z" fill="#C4C4C4"/>
+          <path
+            id="wave-1"
+            d="M969.5 1060.5C718 1026.5 323.5 929.5 0 978V0.5H1920V1018C1593.5 1053.5 1481.5 1107.5 969.5 1060.5Z"
+            fill="#C4C4C4"
+          />
         </clipPath>
       </svg>
 
@@ -38,9 +41,12 @@
         </v-icon>
       </v-btn>
     </div>
-    
 
-    <p class="deep-purple--text text--accent-1 text-overline px-5 py-3 mb-1 font-weight-regular newsCard__source">
+    <p
+      class="deep-purple--text text--accent-1
+        text-overline px-5 py-3 mb-1
+        font-weight-regular newsCard__source"
+    >
       {{ headline.source.name }}
     </p>
 
@@ -66,8 +72,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import { getFriendlyDate } from '@/helpers/useDate';
-import { getSlug } from '@/helpers/useSlug';
+import getFriendlyDate from '@/helpers/useDate';
+import getSlug from '@/helpers/useSlug';
 
 export default {
   props: {
@@ -88,7 +94,7 @@ export default {
   },
   computed: {
     ...mapState({
-      visitedHeadlines: state => state.headlines.visitedHeadlines
+      visitedHeadlines: (state) => state.headlines.visitedHeadlines,
     }),
     date() {
       return getFriendlyDate(this.headline.publishedAt);
@@ -98,18 +104,18 @@ export default {
     },
     slug() {
       return getSlug(this.headline.title);
-    }
+    },
   },
   methods: {
     redirectHeadline() {
-      this.$store.dispatch('headlines/setCurrentHeadline', this.headline)
-      this.$router.push({ name: 'Headline', params: { slug: this.slug } })
+      this.$store.dispatch('headlines/setCurrentHeadline', this.headline);
+      this.$router.push({ name: 'Headline', params: { slug: this.slug } });
     },
     openModal() {
-      this.$store.dispatch('newsModal/setHeadline', this.headline)
-      this.$store.dispatch('newsModal/setShowModal', true)
-    }
-  }
+      this.$store.dispatch('newsModal/setHeadline', this.headline);
+      this.$store.dispatch('newsModal/setShowModal', true);
+    },
+  },
 };
 </script>
 
