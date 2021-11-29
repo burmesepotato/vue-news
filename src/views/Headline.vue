@@ -21,7 +21,6 @@
             >
               {{ getDate(headline.published_at) }}
             </p>
-              
             <v-img
               :lazy-src="headline.urlToImage"
               :src="headline.urlToImage"
@@ -31,17 +30,23 @@
             <div class="headline__content text-body-1 text-sm-h6 mb-10">{{ headline.content }}</div>
 
             <div v-if="headline.url" class="text-subtitle-1 mb-10 font-italic">
-              <a :href="headline.url" class="text--white" target="_blank" rel="noopener noreferrer">View the original here</a>.
+              <a
+                :href="headline.url"
+                class="text--white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View the original here
+              </a>.
             </div>
 
             <div class="d-flex flex-wrap justify-space-between mb-4 mb-sm-8">
-              <p 
-                v-if="headline.author" 
+              <p
+                v-if="headline.author"
                 class="text-subtitle-1 font-weight-light mb-2 mr-2 font-italic"
               >
                 By {{ headline.author }}
               </p>
-              
 
               <v-chip
                 v-if="headline.source && headline.source.name"
@@ -62,8 +67,8 @@
           <hr class="separator">
 
           <div class="text-right">
-            <router-link 
-              :to="{ name : 'News' }" 
+            <router-link
+              :to="{ name : 'News' }"
               class="deep-purple--text text--accent-1 text-decoration-none"
             >
               <v-icon color="deep-purple accent-1">mdi-arrow-left-thin</v-icon>
@@ -77,30 +82,30 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { getFriendlyDate } from '@/helpers/useDate'
+import { mapState } from 'vuex';
+import { getFriendlyDate } from '@/helpers/useDate';
 
-  export default {
-    props: {
-      slug: {
-        type: String,
-      },
+export default {
+  props: {
+    slug: {
+      type: String,
     },
-    created() {
-      this.$store.dispatch('headlines/getCurrentHeadline')
-      this.$store.dispatch('headlines/setVisitedHeadlines', this.headline.url)
+  },
+  created() {
+    this.$store.dispatch('headlines/getCurrentHeadline');
+    this.$store.dispatch('headlines/setVisitedHeadlines', this.headline.url);
+  },
+  computed: {
+    ...mapState({
+      headline: (state) => state.headlines.currentHeadline,
+    }),
+  },
+  methods: {
+    getDate() {
+      return getFriendlyDate(this.headline.publishedAt);
     },
-    computed: {
-      ...mapState({
-        headline: (state) => state.headlines.currentHeadline
-      }),
-    },
-    methods: {
-      getDate() {
-        return getFriendlyDate(this.headline.publishedAt);
-      },
-    }
-  }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
