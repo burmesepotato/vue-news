@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from 'vuex';
+import store from '@/store/index';
 import {
   API_HEADLINES_URL,
   API_SOURCES_URL,
