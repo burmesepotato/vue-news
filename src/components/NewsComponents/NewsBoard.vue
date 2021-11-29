@@ -19,15 +19,19 @@
     >
       No headline news at the moment.
     </div>
+
+    <NewsModal />
   </v-container>
 </template>
 
 <script>
 import NewsCard from '@/components/NewsComponents/NewsCard.vue';
+import NewsModal from '@/components/NewsComponents/NewsModal.vue';
 
 export default {
   components: {
     NewsCard,
+    NewsModal,
   },
   props: {
     headlines: {
@@ -37,7 +41,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

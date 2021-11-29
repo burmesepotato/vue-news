@@ -25,7 +25,5 @@
 </script>
 
 <style lang="scss" scoped>
-.newsSkeleton {
-  border: 1px solid var(--color-grey);
-}
+@use '@/assets/scss/components/newsSkeleton.scss';
 </style>

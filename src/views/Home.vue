@@ -34,7 +34,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#news {
-  height: 100%;
-}
+@use '@/assets/scss/views/news' as *;
 </style>

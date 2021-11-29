@@ -43,6 +43,14 @@
     transition: var(--transition-sm);
   }
 
+  &__imgIcon {
+    color: #7C4DFF;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    z-index: 3;
+  }
+
   &__source,
   &__title {
     line-height: 1.3;

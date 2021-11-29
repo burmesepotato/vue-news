@@ -27,6 +27,10 @@ export const mutations = {
   },
   SET_VISITED_HEADLINES(state, url) {
     state.visitedHeadlines.add(url)
+  },
+  UPDATE_HEADLINE(state, headline) {
+    const INDEX = state.headlines.findIndex(h => h.url === headline.url)
+    state.headlines[INDEX].title = headline.title
   }
 };
 
@@ -59,6 +63,9 @@ export const actions = {
   },
   setVisitedHeadlines({ commit }, url) {
     commit('SET_VISITED_HEADLINES', url)
+  },
+  updateHeadlineTitle({ commit }, headline) {
+    commit('UPDATE_HEADLINE', headline)
   }
 };
 

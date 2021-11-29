@@ -104,19 +104,5 @@ import { getFriendlyDate } from '@/helpers/useDate'
 </script>
 
 <style lang="scss" scoped>
-#headline {
-  height: 100%;
-}
-
-.headline {
-  &__title {
-    line-height: 1.3;
-  }
-
-  &__content {
-    font-weight: 400;
-    line-height: 1.8;
-    text-align: justify;
-  }
-}
+@use '@/assets/scss/views/headline' as *;
 </style>

@@ -12,10 +12,12 @@
       ></v-progress-linear>
     </template>
 
-    <div class="newsCard__imgWrapper" @click="redirectHeadline">
+    
+    <div class="newsCard__imgWrapper">
       <img :src="headline.urlToImage" :alt="headline.title" class="newsCard__img">
       
       <svg 
+      @click="redirectHeadline"
         xmlns="http://www.w3.org/2000/svg" 
         width="1920" height="1080" viewBox="0 0 1920 1080" fill="none"
       >
@@ -23,7 +25,20 @@
           <path id="wave-1" d="M969.5 1060.5C718 1026.5 323.5 929.5 0 978V0.5H1920V1018C1593.5 1053.5 1481.5 1107.5 969.5 1060.5Z" fill="#C4C4C4"/>
         </clipPath>
       </svg>
+
+      <v-btn
+        color="grey darken-4"
+        class="newsCard__imgIcon px-2"
+        min-width="auto"
+        elevation="0"
+        @click="openModal"
+      >
+        <v-icon>
+          mdi-square-edit-outline
+        </v-icon>
+      </v-btn>
     </div>
+    
 
     <p class="deep-purple--text text--accent-1 text-overline px-5 py-3 mb-1 font-weight-regular newsCard__source">
       {{ headline.source.name }}
@@ -79,15 +94,20 @@ export default {
       return getFriendlyDate(this.headline.publishedAt);
     },
     hasVisited() {
-      return this.visitedHeadlines.has(this.headline.url)
+      return this.visitedHeadlines.has(this.headline.url);
+    },
+    slug() {
+      return getSlug(this.headline.title);
     }
   },
   methods: {
     redirectHeadline() {
-      let slug = getSlug(this.headline.title);
-
       this.$store.dispatch('headlines/setCurrentHeadline', this.headline)
-      this.$router.push({ name: 'Headline', params: { slug: slug } })
+      this.$router.push({ name: 'Headline', params: { slug: this.slug } })
+    },
+    openModal() {
+      this.$store.dispatch('newsModal/setHeadline', this.headline)
+      this.$store.dispatch('newsModal/setShowModal', true)
     }
   }
 };

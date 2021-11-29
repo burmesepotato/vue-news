@@ -65,39 +65,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.newsFilter {
-  padding: 8rem 0;
-  z-index: 10;
-
-  &__grid {
-    display: grid;
-    grid-gap: 1rem;
-
-    @media screen and (min-width: 759.99px) {
-      grid-template-columns: 1fr max-content;
-    }
-  }
-
-  &__search {
-    padding-top: 19.5px;
-  }
-}
-
-.gradient-background {
-  background: linear-gradient(300deg,#311b92,#7c4dff,#311b92);
-  background-size: 180% 180%;
-  animation: gradient-animation 10s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+@use '@/assets/scss/components/newsFilter.scss';
 </style>

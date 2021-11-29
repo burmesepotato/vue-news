@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.v-dialog.v-dialog--active{
+  width: 100% !important;
+}
+
 @media only screen and (min-width: map-get($grid-breakpoints, 'xl')) {
   .container {
   max-width: 1440px !important;

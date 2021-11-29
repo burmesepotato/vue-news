@@ -8,7 +8,7 @@ import {
 } from '@/constants/apiSettings';
 
 const INSTANCE = axios.create({
-  timeout: 4000
+  timeout: 5000
 })
 
 
@@ -19,8 +19,5 @@ export const fetchSources = () => INSTANCE.get(`${API_SOURCES_URL}apiKey=${API_K
 export const fetchSearch = (text) => INSTANCE.get(`${API_SEARCH_URL}${text}&apiKey=${API_KEY}`)
 
 export const displayError = (err) => {
-  // console.warn(err.response)
-  // console.warn(err.message)
-
   store.dispatch('error/setMessage', err.message)
 }
