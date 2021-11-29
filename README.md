@@ -16,6 +16,9 @@ On Home page, the user will also be able to:
 - see which article they have already read
 - update title of each headline
 
+### Note:
+The app is deployed [here](https://vue-news-a4efc.firebaseapp.com/) on firebase. However, due to changes in [pricing model](https://newsapi.org/pricing) by **NewsAPI**, requests from the browser are not allowed on the Developer plan, except from localhost. Hence, this would result in Error 426.
+
 ## Project setup
 ```
 npm install
