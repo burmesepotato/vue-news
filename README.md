@@ -17,7 +17,7 @@ On Home page, the user will also be able to:
 - update title of each headline
 
 ### Note:
-The app is deployed [here](https://vue-news-a4efc.firebaseapp.com/) on firebase. However, due to changes in [pricing model](https://newsapi.org/pricing) by **NewsAPI**, requests from the browser are not allowed on the Developer plan, except from localhost. Hence, this would result in Error 426.
+The app is deployed [here](https://vue-news-a4efc.firebaseapp.com/) on firebase. However, due to changes in [pricing model](https://newsapi.org/pricing) by **NewsAPI**, requests from the browser are not allowed on the Developer plan, except from localhost. Hence, the hosted site would result in Error 426, but runs and functions as it should on a local machine with Free Plan.
 
 ![Screenshot of Home screen](https://github.com/burmesepotato/git-readme/blob/main/vue-news/vue-news-home.jpg)
 
